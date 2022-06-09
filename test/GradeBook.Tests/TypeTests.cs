@@ -7,20 +7,22 @@ namespace GradeBook.Tests
     public class TypeTests
     {
         [Fact]
-        public void StringBehavesLikeValueTypes(){
+        public void StringBehavesLikeValueTypes()
+        {
             string name = "Whitson";
-            string upperName =   MakeUpperCase(name);
+            string upperName = MakeUpperCase(name);
             Assert.Equal("WHITSON", upperName);
             Assert.Equal("Whitson", name);
         }
 
         private string MakeUpperCase(string parameter)
         {
-          return  parameter.ToUpper();
+            return parameter.ToUpper();
         }
 
         [Fact]
-        public void ValueTypesAlsoPassByValue(){
+        public void ValueTypesAlsoPassByValue()
+        {
 
             int x = GetInt();
             SetInt(out x);
@@ -38,7 +40,8 @@ namespace GradeBook.Tests
         }
 
         [Fact]
-        public void CSharpCanPassByRef(){
+        public void CSharpCanPassByRef()
+        {
             Book book1 = GetBook("Book 1");
             GetBookSetName(ref book1, "New Name");
             Assert.Equal("New Name", book1.Name);
@@ -51,7 +54,8 @@ namespace GradeBook.Tests
         }
 
         [Fact]
-        public void CSharpIsPassByValue(){
+        public void CSharpIsPassByValue()
+        {
             Book book1 = GetBook("Book 1");
             GetBookSetName(book1, "New Name");
             Assert.NotEqual("New Name", book1.Name);
@@ -64,7 +68,8 @@ namespace GradeBook.Tests
         }
 
         [Fact]
-        public void CanSetNameFromReference(){
+        public void CanSetNameFromReference()
+        {
             Book book1 = GetBook("Book 1");
             SetName(book1, "New Name");
             Assert.Equal("New Name", book1.Name);
@@ -76,7 +81,8 @@ namespace GradeBook.Tests
         }
 
         [Fact]
-        public void GetBookReturnsDifferentObjects(){
+        public void GetBookReturnsDifferentObjects()
+        {
             Book book1 = GetBook("Book 1");
             Book book2 = GetBook("Book 2");
 
@@ -86,7 +92,8 @@ namespace GradeBook.Tests
         }
 
         [Fact]
-        public void TwoVarsCanReferenceSameObject(){
+        public void TwoVarsCanReferenceSameObject()
+        {
             Book book1 = GetBook("Book 1");
             Book book2 = book1;
 
@@ -94,7 +101,8 @@ namespace GradeBook.Tests
             Assert.Equal("Book 1", book2.Name);
             Assert.Same(book1, book2);
         }
-        Book GetBook(string name){
+        Book GetBook(string name)
+        {
             return new Book(name);
         }
     }
