@@ -3,6 +3,7 @@ using System;
 
 namespace GradeBook
 {
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
     public class Book
     {
         public Book(string name)
@@ -16,6 +17,10 @@ namespace GradeBook
             if (grade <= 100 && grade >= 0)
             {
                 grades.Add(grade);
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -69,12 +74,11 @@ namespace GradeBook
 
         public Statistics GetUserInputAndGetStatistics()
         {
-            string input;
             bool stop = false;
             do
             {
                 Console.WriteLine("Please Ender a Grade or 'Q' or 'q' to quit");
-                input = Console.ReadLine();
+                string input = Console.ReadLine();
                 if (String.Equals(input.ToLower(), "q"))
                 {
                     stop = true;
@@ -120,6 +124,8 @@ namespace GradeBook
             get;
             set;
         }
+
+        public event GradeAddedDelegate GradeAdded;
 
         public const string CATEGORY = "Science";
     }
