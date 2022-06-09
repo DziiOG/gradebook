@@ -9,7 +9,7 @@ namespace GradeBook
         {
             Book book = new Book("Whitson's grade book");
             Statistics stats = book.GetUserInputAndGetStatistics();
-            Console.WriteLine($"Average: {stats.Average:N1}, Highest Grade : {stats.High:N1}, Lowest Grade : {stats.Low:N1} and Letter Grade : {stats.Letter}");
+            Console.WriteLine($"For the book name {book.Name}, Average: {stats.Average:N1}, Highest Grade : {stats.High:N1}, Lowest Grade : {stats.Low:N1} and Letter Grade : {stats.Letter}");
         }
     }
 }

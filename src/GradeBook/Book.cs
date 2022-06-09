@@ -93,10 +93,12 @@ namespace GradeBook
                         {
                             Console.WriteLine(ex.Message);
                         }
-                        catch (FormatException ex){
+                        catch (FormatException ex)
+                        {
                             Console.WriteLine(ex.Message);
                         }
-                        finally{
+                        finally
+                        {
                             Console.WriteLine("**");
                         }
 
@@ -112,7 +114,13 @@ namespace GradeBook
 
 
         private List<double> grades;
-        public string Name;
 
+        public string Name
+        {
+            get;
+            set;
+        }
+
+        public const string CATEGORY = "Science";
     }
 }
