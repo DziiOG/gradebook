@@ -11,7 +11,7 @@ public class BookTests
     public void BookCalculatesAnAverageGrade()
     {
         // arrange
-        Book book = new Book("Test's book grade");
+        InMemoryBook book = new InMemoryBook("Test's book grade");
         book.AddGrade(89.1);
         book.AddGrade(90.5);
         book.AddGrade(77.3);
