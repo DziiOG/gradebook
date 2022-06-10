@@ -26,7 +26,7 @@ namespace GradeBook
             return this;
         }
 
-         public void SetLetterGrade(double grade)
+        public void SetLetterGrade(double grade)
         {
             switch (grade)
             {

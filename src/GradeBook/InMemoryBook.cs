@@ -3,7 +3,7 @@ using System;
 
 namespace GradeBook
 {
-   public class InMemoryBook : Book, IBook
+    public class InMemoryBook : Book, IBook
     {
         public InMemoryBook(string name) : base(name)
         {

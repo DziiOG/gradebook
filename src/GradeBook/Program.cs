@@ -13,7 +13,7 @@ namespace GradeBook
             Console.WriteLine($"For the book name {book.Name}, Average: {stats.Average:N1}, Highest Grade : {stats.High:N1}, Lowest Grade : {stats.Low:N1} Letter Grade : {stats.Letter}");
         }
 
-         public static void EnterGrades(IBook book)
+        public static void EnterGrades(IBook book)
         {
             bool stop = false;
             do
@@ -24,7 +24,7 @@ namespace GradeBook
                 {
                     stop = true;
                 }
-                else 
+                else
                 {
                     bool isValidDouble = Double.TryParse(input, out double result);
                     if (isValidDouble)
@@ -57,8 +57,9 @@ namespace GradeBook
                 Console.WriteLine("**");
             }
         }
-        static void OnGradeAdded(object sender, EventArgs e){
-          Console.WriteLine($"Grade was Added");
+        static void OnGradeAdded(object sender, EventArgs e)
+        {
+            Console.WriteLine($"Grade was Added");
         }
     }
 }

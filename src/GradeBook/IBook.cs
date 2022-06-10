@@ -1,6 +1,6 @@
 namespace GradeBook
 {
-     public interface IBook
+    public interface IBook
     {
         void AddGrade(double grade);
         Statistics GetStatistics();
