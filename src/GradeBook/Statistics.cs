@@ -4,58 +4,77 @@ namespace GradeBook
 {
     public class Statistics
     {
-        public Statistics(List<double> grades)
+        public Statistics(List<double> numbers)
         {
-            Average = 0.0;
             High = double.MinValue;
             Low = double.MaxValue;
-            Grades = grades;
+            this.numbers = numbers;
+            sum = 0.0;
+            count = 0;
+        }
+        public Statistics(List<string> stringNumbers){
+            High = double.MinValue;
+            Low = double.MaxValue;
+            this.stringNumbers = stringNumbers;
+            sum = 0.0;
+            count = 0;
         }
 
+        public void Add(double number)
+        {
+            sum += number;
+            High = Math.Max(number, High);
+            Low = Math.Min(number, Low);
+            count++;
+        }
         public Statistics GetStatistics()
         {
-            double sum = 0.0;
-            for (int i = 0; i < Grades.Count; i++)
+            for (int i = 0; i < numbers.Count; i++)
             {
-                High = Math.Max(Grades[i], High);
-                Low = Math.Min(Grades[i], Low);
-                sum += Grades[i];
+                Add(numbers[i]);
             }
-            Average = sum / Grades.Count;
-            SetLetterGrade(Average);
             return this;
         }
 
-        public void SetLetterGrade(double grade)
+        public char SetLetterGrade(double number)
         {
-            switch (grade)
+            switch (number)
             {
                 case double avg when avg >= 90.0:
-                    Letter = 'A';
-                    break;
+                    return 'A';
                 case double avg when avg >= 80.0:
-                    Letter = 'B';
-                    break;
+                    return 'B';
                 case double avg when avg >= 70.0:
-                    Letter = 'C';
-                    break;
+                    return 'C';
                 case double avg when avg >= 60.0:
-                    Letter = 'D';
-                    break;
+                    return 'D';
                 default:
-                    Letter = 'F';
-                    break;
+                    return 'F';
             }
         }
 
 
-        public double Average;
+        public double Average
+        {
+            get
+            {
+                return sum / count;
+            }
+        }
         public double High;
         public double Low;
-        public char Letter;
-        public List<double> Grades;
+        public char Letter
+        {
+            get
+            {
+                return SetLetterGrade(Average);
+            }
+        }
+        private List<double> numbers;
+        private List<string> stringNumbers;
 
         private double sum;
+        private double count;
 
     }
 }

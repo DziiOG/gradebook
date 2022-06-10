@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace GradeBook
 {
@@ -24,7 +26,17 @@ namespace GradeBook
 
         public override Statistics GetStatistics()
         {
-            throw new NotImplementedException();
+            List<double> grades = ReadGradesFromFile();
+            Statistics statistics = new Statistics(grades);
+            return statistics.GetStatistics();
+        }
+
+        private List<double> ReadGradesFromFile(){
+            string fileContent = File.ReadAllText($"{Name}.txt");
+            string[] arrayString = fileContent.Split(new char[] { ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            List<string> listString = new List<string>(arrayString);
+            List<double> grades = listString.Select(str => Double.Parse(str)).ToList();
+            return grades;
         }
 
         public override event GradeAddedDelegate GradeAdded;
